@@ -1,0 +1,1 @@
+Project code for my article [NestJS Chapter 02 – Data Transfer Objects](https://www.hardwired.dev/2024/06/09/nestjs-chapter-01-new-project/) on [HardWired.dev](https://www.hardwired.dev).
