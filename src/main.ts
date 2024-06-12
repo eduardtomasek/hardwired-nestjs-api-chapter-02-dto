@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as basicAuth from 'express-basic-auth';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -29,6 +30,15 @@ async function bootstrap() {
         },
     });
     SwaggerModule.setup('api', app, document);
+
+    app.useGlobalPipes(
+        new ValidationPipe({
+            whitelist: true,
+            transform: true,
+            transformOptions: { enableImplicitConversion: true },
+            forbidNonWhitelisted: true,
+        }),
+    );
 
     await app.listen(3000);
 }
